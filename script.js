@@ -14,7 +14,17 @@ document.querySelectorAll(".date-option").forEach(button => {
     document.querySelectorAll(".date-option").forEach(b => b.classList.remove("selected-date"));
     button.classList.add("selected-date");
     chosenDate = button.dataset.date;
-    selected.textContent = `Ooooh, ${chosenDate} sounds lovely. 💕`;
+
+    const messages = [
+      `Ooooh, ${chosenDate} sounds lovely. 💕`,
+      `Yayyy, ${chosenDate} it is! I can't wait. 🥰`,
+      `${chosenDate}? I think that's a pretty perfect choice. 💗`,
+      `Awww, ${chosenDate} sounds wonderful. I'm looking forward to it! 💕`,
+      `Then ${chosenDate} it shall be! I’m already excited. ❤️`
+    ];
+
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    selected.textContent = randomMessage;
   });
 });
 
