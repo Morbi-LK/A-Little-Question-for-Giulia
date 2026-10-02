@@ -1,1 +1,120 @@
-const card = document.getElementById("card"); const success = document.getElementById("success"); const yesBtn = document.getElementById("yesBtn"); const maybeBtn = document.getElementById("maybeBtn"); const againBtn = document.getElementById("againBtn"); const selected = document.getElementById("selected"); const successText = document.getElementById("successText"); const hearts = document.querySelector(".hearts"); let chosenDate = ""; document.querySelectorAll(".date-option").forEach(button => { button.addEventListener("click", () => { document.querySelectorAll(".date-option").forEach(b => { b.classList.remove("selected-date"); }); button.classList.add("selected-date"); chosenDate = button.dataset.date; const messages = [ Ooooh, ${chosenDate} sounds lovely. 💕, Yayyy, ${chosenDate} it is! I can't wait. 🥰, ${chosenDate}? I think that's a pretty perfect choice. 💗, Awww, ${chosenDate} sounds wonderful. I'm looking forward to it! 💕, Then ${chosenDate} it shall be! I'm already excited. ❤️ ]; const randomIndex = Math.floor(Math.random() * messages.length); selected.textContent = messages[randomIndex]; }); }); function handleYes() { successText.textContent = chosenDate ? Then it's settled — ${chosenDate} it is! I can't wait to spend these days with you, baby 💗 : Then it's a date! Now we just need to pick a day between October 7 and 11. I can't wait to spend these days with you, baby 💗; card.classList.add("hidden"); success.classList.remove("hidden"); burstHearts(); } yesBtn.addEventListener("click", handleYes); let maybeClicked = false; maybeBtn.addEventListener("click", () => { if (maybeClicked) { handleYes(); return; } maybeBtn.textContent = "Take your time 🌸"; setTimeout(() => { maybeBtn.textContent = "YES, OF COURSE 💗"; maybeBtn.classList.remove("maybe-btn"); maybeBtn.classList.add("yes-btn"); maybeClicked = true; }, 1800); }); againBtn.addEventListener("click", () => { success.classList.add("hidden"); card.classList.remove("hidden"); }); function makeHeart() { const heart = document.createElement("span"); heart.className = "heart"; heart.textContent = Math.random() > .25 ? "♡" : "♥"; heart.style.left = ${Math.random() * 100}%; heart.style.fontSize = ${14 + Math.random() * 20}px; heart.style.animationDuration = ${5 + Math.random() * 5}s; hearts.appendChild(heart); setTimeout(() => heart.remove(), 10000); } setInterval(makeHeart, 900); function burstHearts() { for (let i = 0; i < 25; i++) { setTimeout(makeHeart, i * 60); } }
+const card = document.getElementById("card");
+const success = document.getElementById("success");
+const yesBtn = document.getElementById("yesBtn");
+const maybeBtn = document.getElementById("maybeBtn");
+const againBtn = document.getElementById("againBtn");
+const selected = document.getElementById("selected");
+const successText = document.getElementById("successText");
+const hearts = document.querySelector(".hearts");
+
+let chosenDate = "";
+
+// Date selection
+document.querySelectorAll(".date-option").forEach(button => {
+  button.addEventListener("click", () => {
+
+    document.querySelectorAll(".date-option").forEach(b => {
+      b.classList.remove("selected-date");
+    });
+
+    button.classList.add("selected-date");
+
+    chosenDate = button.dataset.date;
+
+    const messages = [
+      `Ooooh, ${chosenDate} sounds lovely. 💕`,
+      `Yayyy, ${chosenDate} it is! I can't wait. 🥰`,
+      `${chosenDate}? I think that's a pretty perfect choice. 💗`,
+      `Awww, ${chosenDate} sounds wonderful. I'm looking forward to it! 💕`,
+      `Then ${chosenDate} it shall be! I'm already excited. ❤️`
+    ];
+
+    const randomIndex =
+      Math.floor(Math.random() * messages.length);
+
+    selected.textContent = messages[randomIndex];
+  });
+});
+
+
+// YES button
+function handleYes() {
+  successText.textContent = chosenDate
+    ? `Then it's settled — ${chosenDate} it is! I can't wait to spend these days with you, baby 💗`
+    : `Then it's a date! Now we just need to pick a day between October 7 and 11. I can't wait to spend these days with you, baby 💗`;
+
+  card.classList.add("hidden");
+  success.classList.remove("hidden");
+
+  burstHearts();
+}
+
+yesBtn.addEventListener("click", handleYes);
+
+
+// "Let me think..." button
+let maybeClicked = false;
+
+maybeBtn.addEventListener("click", () => {
+
+  if (maybeClicked) {
+    handleYes();
+    return;
+  }
+
+  maybeBtn.textContent = "Take your time 🌸";
+
+  setTimeout(() => {
+    maybeBtn.textContent = "YES, OF COURSE 💗";
+
+    maybeBtn.classList.remove("maybe-btn");
+    maybeBtn.classList.add("yes-btn");
+
+    maybeClicked = true;
+  }, 1800);
+});
+
+
+// Back button
+againBtn.addEventListener("click", () => {
+  success.classList.add("hidden");
+  card.classList.remove("hidden");
+});
+
+
+// Create floating heart
+function makeHeart() {
+  const heart = document.createElement("span");
+
+  heart.className = "heart";
+
+  heart.textContent =
+    Math.random() > 0.25 ? "♡" : "♥";
+
+  heart.style.left =
+    `${Math.random() * 100}%`;
+
+  heart.style.fontSize =
+    `${14 + Math.random() * 20}px`;
+
+  heart.style.animationDuration =
+    `${5 + Math.random() * 5}s`;
+
+  hearts.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 10000);
+}
+
+
+// Create hearts continuously
+setInterval(makeHeart, 900);
+
+
+// Burst of hearts when saying yes
+function burstHearts() {
+  for (let i = 0; i < 25; i++) {
+    setTimeout(makeHeart, i * 60);
+  }
+}
