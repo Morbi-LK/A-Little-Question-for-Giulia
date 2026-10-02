@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
-{
-box-sizing: border-box;
-}
+* {
+  box-sizing: border-box;
+  }
 
-{
+:root {
 --pink: #e85d8e;
 --dark-pink: #b83f6c;
 --cream: #fff8f7;
@@ -147,7 +147,7 @@ cursor: pointer;
 transition: .2s ease;
 }
 
-.date-option,
+.date-option:hover,
 .date-option.selected-date {
 color: white;
 background: var(--pink);
@@ -194,7 +194,7 @@ outline: none;
 cursor: pointer;
 }
 
-input[type="time"] {
+input[type="time"]:focus {
 border-color: var(--pink);
 box-shadow: 0 0 0 4px rgba(232, 93, 142, .1);
 }
@@ -231,7 +231,7 @@ cursor: pointer;
 transition: .2s ease;
 }
 
-.choice-card {
+.choice-card:hover {
 transform: translateY(-4px);
 border-color: var(--pink);
 box-shadow: 0 10px 25px rgba(232, 93, 142, .15);
@@ -296,7 +296,7 @@ box-shadow: 0 10px 25px rgba(217, 77, 128, .25);
 transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.continue-btn {
+.continue-btn:hover {
 transform: translateY(-3px) scale(1.02);
 box-shadow: 0 14px 30px rgba(217, 77, 128, .3);
 }
@@ -340,7 +340,7 @@ font-size: clamp(2.1rem, 6vw, 3.5rem);
 line-height: 1.05;
 }
 
-.success-card > p(.eyebrow)(.final-message) {
+.success-card > p:not(.eyebrow):not(.final-message) {
 color: var(--muted);
 line-height: 1.7;
 }
@@ -418,7 +418,7 @@ cursor: pointer;
 transition: .2s ease;
 }
 
-.again-btn {
+.again-btn:hover {
 transform: translateY(-2px);
 }
 
