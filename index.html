@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 
-<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>A Little Question for Giulia 💗</title> <link rel="stylesheet" href="style.css"> </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Question for Giulia 💗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-<div class="hearts" aria-hidden="true"></div>
+  <div class="hearts" aria-hidden="true"></div>
 
-<main class="card" id="card">
+  <main class="card" id="card">
 
+```
 <!-- STEP 1: DATE -->
 <section class="step active" id="step1">
 
@@ -144,15 +151,49 @@
     <span>what should we eat?</span> 🍴
   </h1>
 
-  <p class="intro" id="foodIntro">
+  <p class="intro">
     Pick something that sounds delicious to you 💗
   </p>
 
-  <!--
-    Food choices are inserted here dynamically
-    depending on the selected date type.
-  -->
-  <div class="choice-grid food-grid" id="foodChoices"></div>
+  <div class="choice-grid food-grid">
+
+    <button class="choice-card" data-food="Italian">
+      <span class="choice-icon">🍝</span>
+      <strong>Italian</strong>
+      <small>Pizza, pasta & everything yummy</small>
+    </button>
+
+    <button class="choice-card" data-food="Sushi">
+      <span class="choice-icon">🍣</span>
+      <strong>Sushi</strong>
+      <small>Little rolls & delicious bites</small>
+    </button>
+
+    <button class="choice-card" data-food="Burgers">
+      <span class="choice-icon">🍔</span>
+      <strong>Burgers</strong>
+      <small>Something deliciously messy</small>
+    </button>
+
+    <button class="choice-card" data-food="Asian">
+      <span class="choice-icon">🍜</span>
+      <strong>Asian</strong>
+      <small>Noodles, rice & tasty flavours</small>
+    </button>
+
+    <button class="choice-card" data-food="Something sweet">
+      <span class="choice-icon">🍰</span>
+      <strong>Something sweet</strong>
+      <small>Dessert deserves to be a meal, right?</small>
+    </button>
+
+    <button class="choice-card" data-food="Surprise me">
+      <span class="choice-icon">🎁</span>
+      <strong>Surprise me</strong>
+      <small>You choose, I trust you 💕</small>
+    </button>
+
+  </div>
 
   <p class="selected" id="selectedFood"></p>
 
@@ -161,13 +202,15 @@
   </button>
 
 </section>
+```
 
-</main>
+  </main>
 
-<!-- SUCCESS -->
+  <!-- SUCCESS -->
 
-<section class="success hidden" id="success">
+  <section class="success hidden" id="success">
 
+```
 <div class="success-card">
 
   <div class="big-heart">💗</div>
@@ -225,9 +268,11 @@
   </button>
 
 </div>
+```
 
-</section>
+  </section>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
-</body> </html>
+</body>
+</html>
