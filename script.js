@@ -20,8 +20,8 @@ document.querySelectorAll(".date-option").forEach(button => {
 
 yesBtn.addEventListener("click", () => {
   successText.textContent = chosenDate
-    ? `Then it's settled — ${chosenDate} it is! I can't wait to spend some time with you, baby 💗`
-    : `Then it's a date! Now we just need to pick a day between October 7 and 11. I can't wait to spend some time with you, baby 💗`;
+    ? `Then it's settled — ${chosenDate} it is! I can't wait to spend these days with you, baby 💗`
+    : `Then it's a date! Now we just need to pick a day between October 7 and 11. I can't wait to spend these days with you, baby 💗`;
 
   card.classList.add("hidden");
   success.classList.remove("hidden");
