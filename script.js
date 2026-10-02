@@ -11,7 +11,10 @@ let chosenDate = "";
 
 document.querySelectorAll(".date-option").forEach(button => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".date-option").forEach(b => b.classList.remove("selected-date"));
+    document.querySelectorAll(".date-option").forEach(b => {
+      b.classList.remove("selected-date");
+    });
+
     button.classList.add("selected-date");
     chosenDate = button.dataset.date;
 
@@ -20,11 +23,11 @@ document.querySelectorAll(".date-option").forEach(button => {
       `Yayyy, ${chosenDate} it is! I can't wait. 🥰`,
       `${chosenDate}? I think that's a pretty perfect choice. 💗`,
       `Awww, ${chosenDate} sounds wonderful. I'm looking forward to it! 💕`,
-      `Then ${chosenDate} it shall be! I’m already excited. ❤️`
+      `Then ${chosenDate} it shall be! I'm already excited. ❤️`
     ];
 
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    selected.textContent = randomMessage;
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    selected.textContent = messages[randomIndex];
   });
 });
 
