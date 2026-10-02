@@ -14,6 +14,9 @@ const finishBtn = document.getElementById("finishBtn");
 const timeInput = document.getElementById("timeInput");
 const chosenDateDisplay = document.getElementById("chosenDateDisplay");
 
+const foodChoices = document.getElementById("foodChoices");
+const foodIntro = document.getElementById("foodIntro");
+
 const againBtn = document.getElementById("againBtn");
 
 const finalDate = document.getElementById("finalDate");
@@ -33,6 +36,146 @@ let chosenType = "";
 let chosenFood = "";
 
 /* -----------------------------
+FOOD OPTIONS
+----------------------------- */
+
+const foodOptions = {
+
+Aperitivo: [
+{
+name: "Cocktails & Mocktails",
+icon: "🍹",
+description: "Pretty drinks & something refreshing"
+},
+{
+name: "Charcuterie",
+icon: "🧀",
+description: "Cheese, meats & little treats"
+},
+{
+name: "Bruschetta",
+icon: "🍅",
+description: "Crispy bread & delicious toppings"
+},
+{
+name: "Small Bites",
+icon: "🥨",
+description: "A little bit of everything"
+},
+{
+name: "Something Sweet",
+icon: "🍰",
+description: "Because dessert is important"
+},
+{
+name: "Surprise Me",
+icon: "🎁",
+description: "You choose, I trust you 💕"
+}
+],
+
+Dinner: [
+{
+name: "Italian",
+icon: "🍝",
+description: "Pizza, pasta & everything yummy"
+},
+{
+name: "Sushi",
+icon: "🍣",
+description: "Little rolls & delicious bites"
+},
+{
+name: "Asian",
+icon: "🍜",
+description: "Noodles, rice & tasty flavours"
+},
+{
+name: "Burgers",
+icon: "🍔",
+description: "Something deliciously messy"
+},
+{
+name: "Steak",
+icon: "🥩",
+description: "A proper dinner together"
+},
+{
+name: "Surprise Me",
+icon: "🎁",
+description: "You choose, I trust you 💕"
+}
+],
+
+Lunch: [
+{
+name: "Café Food",
+icon: "☕",
+description: "Something cozy & relaxed"
+},
+{
+name: "Pasta",
+icon: "🍝",
+description: "A delicious little pasta date"
+},
+{
+name: "Sandwiches",
+icon: "🥪",
+description: "Simple, tasty & easy"
+},
+{
+name: "Salad",
+icon: "🥗",
+description: "Something fresh & yummy"
+},
+{
+name: "Asian",
+icon: "🍜",
+description: "Noodles, rice & tasty flavours"
+},
+{
+name: "Surprise Me",
+icon: "🎁",
+description: "You choose, I trust you 💕"
+}
+],
+
+Picnic: [
+{
+name: "Sandwiches",
+icon: "🥪",
+description: "Perfect picnic food"
+},
+{
+name: "Fruit & Berries",
+icon: "🍓",
+description: "Fresh, sweet & juicy"
+},
+{
+name: "Cheese & Crackers",
+icon: "🧀",
+description: "A little picnic classic"
+},
+{
+name: "Pastries",
+icon: "🥐",
+description: "Croissants & yummy treats"
+},
+{
+name: "Sweet Treats",
+icon: "🍪",
+description: "Cookies, cake & more"
+},
+{
+name: "Surprise Me",
+icon: "🎁",
+description: "You choose, I trust you 💕"
+}
+]
+
+};
+
+/* -----------------------------
 STEP HANDLING
 ----------------------------- */
 
@@ -48,6 +191,7 @@ window.scrollTo({
 top: 0,
 behavior: "smooth"
 });
+
 }
 
 /* -----------------------------
@@ -128,9 +272,12 @@ timeContinue.addEventListener("click", () => {
 chosenTime = timeInput.value;
 
 if (!chosenTime) {
+
 selectedTime.textContent =
-"Pick a time first, baby 💕";
+  "Pick a time first, baby 💕";
+
 return;
+
 }
 
 showStep(3);
@@ -162,47 +309,121 @@ typeContinue.classList.remove("hidden");
 
 });
 
+/* -----------------------------
+CREATE FOOD OPTIONS
+----------------------------- */
+
+function loadFoodOptions(type) {
+
+foodChoices.innerHTML = "";
+
+chosenFood = "";
+
+selectedFood.textContent = "";
+
+finishBtn.classList.add("hidden");
+
+const options = foodOptions[type];
+
+if (!options) {
+return;
+}
+
+/* Change the little introduction depending
+on the type of date */
+
+const introductions = {
+
+Aperitivo:
+  "Now let's decide what little treats we should have with our drinks 🍹",
+
+Dinner:
+  "Okay baby, what are we having for dinner? 🍝",
+
+Lunch:
+  "What sounds yummy for our little lunch date? 🥰",
+
+Picnic:
+  "Now we need to fill our little picnic basket 🧺"
+
+};
+
+foodIntro.textContent =
+introductions[type] ||
+"Pick something that sounds delicious to you 💗";
+
+/* Create the buttons */
+
+options.forEach(option => {
+
+const button = document.createElement("button");
+
+button.className = "choice-card";
+
+button.dataset.food = option.name;
+
+button.innerHTML = `
+  <span class="choice-icon">${option.icon}</span>
+  <strong>${option.name}</strong>
+  <small>${option.description}</small>
+`;
+
+
+button.addEventListener("click", () => {
+
+  /* Remove selection from other food choices */
+
+  foodChoices.querySelectorAll(".choice-card").forEach(b => {
+    b.classList.remove("selected-choice");
+  });
+
+
+  /* Select this one */
+
+  button.classList.add("selected-choice");
+
+  chosenFood = option.name;
+
+
+  /* Personalized response */
+
+  if (option.name === "Surprise Me") {
+
+    selectedFood.textContent =
+      "Ooooh, keeping it a surprise? I like that. 👀💗";
+
+  } else {
+
+    selectedFood.textContent =
+      `${option.name}? Yummm, I'm already hungry. 🥰`;
+
+  }
+
+
+  finishBtn.classList.remove("hidden");
+
+});
+
+
+foodChoices.appendChild(button);
+
+});
+
+}
+
+/* -----------------------------
+CONTINUE TO FOOD
+----------------------------- */
+
 typeContinue.addEventListener("click", () => {
 
 if (!chosenType) {
 return;
 }
 
+loadFoodOptions(chosenType);
+
 showStep(4);
-
-});
-
-/* -----------------------------
-STEP 4 — FOOD
------------------------------ */
-
-document.querySelectorAll("[data-food]").forEach(button => {
-
-button.addEventListener("click", () => {
-
-document.querySelectorAll("[data-food]").forEach(b => {
-  b.classList.remove("selected-choice");
-});
-
-button.classList.add("selected-choice");
-
-chosenFood = button.dataset.food;
-
-if (chosenFood === "Surprise me") {
-
-  selectedFood.textContent =
-    "Ooooh, keeping it a surprise? I like that. 👀💗";
-
-} else {
-
-  selectedFood.textContent =
-    `${chosenFood}? Yummm, I'm already hungry. 🥰`;
-
-}
-
-finishBtn.classList.remove("hidden");
-
-});
 
 });
 
@@ -225,15 +446,18 @@ const date = new Date();
 date.setHours(hours);
 date.setMinutes(minutes);
 
-finalTime.textContent = date.toLocaleTimeString([], {
+finalTime.textContent =
+date.toLocaleTimeString([], {
 hour: "numeric",
 minute: "2-digit"
 });
 
 finalType.textContent = chosenType;
+
 finalFood.textContent = chosenFood;
 
 card.classList.add("hidden");
+
 success.classList.remove("hidden");
 
 burstHearts();
@@ -247,6 +471,7 @@ GO BACK / CHANGE CHOICES
 againBtn.addEventListener("click", () => {
 
 success.classList.add("hidden");
+
 card.classList.remove("hidden");
 
 showStep(1);
