@@ -31,7 +31,7 @@ document.querySelectorAll(".date-option").forEach(button => {
   });
 });
 
-yesBtn.addEventListener("click", () => {
+function handleYes() {
   successText.textContent = chosenDate
     ? `Then it's settled — ${chosenDate} it is! I can't wait to spend these days with you, baby 💗`
     : `Then it's a date! Now we just need to pick a day between October 7 and 11. I can't wait to spend these days with you, baby 💗`;
@@ -39,12 +39,25 @@ yesBtn.addEventListener("click", () => {
   card.classList.add("hidden");
   success.classList.remove("hidden");
   burstHearts();
-});
+}
+
+yesBtn.addEventListener("click", handleYes);
+
+let maybeClicked = false;
 
 maybeBtn.addEventListener("click", () => {
+  if (maybeClicked) {
+    handleYes();
+    return;
+  }
+
   maybeBtn.textContent = "Take your time 🌸";
+
   setTimeout(() => {
-    maybeBtn.textContent = "Let me think... 🌸";
+    maybeBtn.textContent = "YES, OF COURSE 💗";
+    maybeBtn.classList.remove("maybe-btn");
+    maybeBtn.classList.add("yes-btn");
+    maybeClicked = true;
   }, 1800);
 });
 
