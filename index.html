@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,263 +12,68 @@
   <div class="hearts" aria-hidden="true"></div>
 
   <main class="card" id="card">
+    <div class="sparkle">✦</div>
 
-```
-<!-- STEP 1: DATE -->
-<section class="step active" id="step1">
+    <p class="eyebrow">A little question for Giulia</p>
 
-  <div class="sparkle">✦</div>
+    <h1>
+      Baby,<br>
+      <span>will you go on a date with me?</span> 💗
+    </h1>
 
-  <p class="eyebrow">A little question for Giulia</p>
+    <p class="intro">
+      I would love to go out with you when I'm at your place
+    </p>
 
-  <h1>
-    Baby,<br>
-    <span>will you go on a date with me?</span> 💗
-  </h1>
-
-  <p class="intro">
-    I would love to go out with you when I'm at your place.
-    Pick a day that feels good for you 🥰
-  </p>
-
-  <div class="dates">
-    <button class="date-option" data-date="October 7">October 7</button>
-    <button class="date-option" data-date="October 8">October 8</button>
-    <button class="date-option" data-date="October 9">October 9</button>
-    <button class="date-option" data-date="October 10">October 10</button>
-    <button class="date-option" data-date="October 11">October 11</button>
-  </div>
-
-  <p class="selected" id="selectedDate"></p>
-
-  <button class="continue-btn hidden" id="dateContinue">
-    Pick a time 💗
-  </button>
-
-</section>
-
-
-<!-- STEP 2: TIME -->
-<section class="step" id="step2">
-
-  <div class="sparkle">♡</div>
-
-  <p class="eyebrow">Step 2</p>
-
-  <h1>
-    What time<br>
-    <span>should we meet?</span> ⏰
-  </h1>
-
-  <p class="intro">
-    Pick whatever time works best for you.
-  </p>
-
-  <div class="time-picker">
-
-    <label for="timeInput">Our date will be on</label>
-
-    <div class="time-display">
-      <span id="chosenDateDisplay">October 7</span>
+    <div class="dates">
+      <button class="date-option" data-date="October 7">October 7</button>
+      <button class="date-option" data-date="October 8">October 8</button>
+      <button class="date-option" data-date="October 9">October 9</button>
+      <button class="date-option" data-date="October 10">October 10</button>
+      <button class="date-option" data-date="October 11">October 11</button>
     </div>
 
-    <input type="time" id="timeInput" value="18:00">
+    <p class="hint">
+      Pick a day that you think would work
+    </p>
 
-  </div>
+    <div class="actions">
+      <button class="yes-btn" id="yesBtn">
+        YES, OF COURSE 💗
+      </button>
 
-  <p class="selected" id="selectedTime"></p>
+      <button class="maybe-btn" id="maybeBtn">
+        Let me think... 🌸
+      </button>
+    </div>
 
-  <button class="continue-btn" id="timeContinue">
-    Choose our date 💕
-  </button>
-
-</section>
-
-
-<!-- STEP 3: DATE TYPE -->
-<section class="step" id="step3">
-
-  <div class="sparkle">✦</div>
-
-  <p class="eyebrow">Step 3</p>
-
-  <h1>
-    What kind of<br>
-    <span>date should we have?</span> 🥰
-  </h1>
-
-  <p class="intro">
-    Pick whichever sounds the most fun to you.
-  </p>
-
-  <div class="choice-grid">
-
-    <button class="choice-card" data-type="Aperitivo">
-      <span class="choice-icon">🍹</span>
-      <strong>Aperitivo</strong>
-      <small>Drinks, little bites & chatting</small>
-    </button>
-
-    <button class="choice-card" data-type="Dinner">
-      <span class="choice-icon">🍝</span>
-      <strong>Dinner</strong>
-      <small>A proper little dinner together</small>
-    </button>
-
-    <button class="choice-card" data-type="Lunch">
-      <span class="choice-icon">🥗</span>
-      <strong>Lunch</strong>
-      <small>Something yummy during the day</small>
-    </button>
-
-    <button class="choice-card" data-type="Picnic">
-      <span class="choice-icon">🧺</span>
-      <strong>Picnic</strong>
-      <small>Food, blankets & being together</small>
-    </button>
-
-  </div>
-
-  <p class="selected" id="selectedType"></p>
-
-  <button class="continue-btn hidden" id="typeContinue">
-    Now let's pick food 🍴
-  </button>
-
-</section>
-
-
-<!-- STEP 4: FOOD -->
-<section class="step" id="step4">
-
-  <div class="sparkle">♡</div>
-
-  <p class="eyebrow">Step 4</p>
-
-  <h1>
-    And finally...<br>
-    <span>what should we eat?</span> 🍴
-  </h1>
-
-  <p class="intro">
-    Pick something that sounds delicious to you 💗
-  </p>
-
-  <div class="choice-grid food-grid">
-
-    <button class="choice-card" data-food="Italian">
-      <span class="choice-icon">🍝</span>
-      <strong>Italian</strong>
-      <small>Pizza, pasta & everything yummy</small>
-    </button>
-
-    <button class="choice-card" data-food="Sushi">
-      <span class="choice-icon">🍣</span>
-      <strong>Sushi</strong>
-      <small>Little rolls & delicious bites</small>
-    </button>
-
-    <button class="choice-card" data-food="Burgers">
-      <span class="choice-icon">🍔</span>
-      <strong>Burgers</strong>
-      <small>Something deliciously messy</small>
-    </button>
-
-    <button class="choice-card" data-food="Asian">
-      <span class="choice-icon">🍜</span>
-      <strong>Asian</strong>
-      <small>Noodles, rice & tasty flavours</small>
-    </button>
-
-    <button class="choice-card" data-food="Something sweet">
-      <span class="choice-icon">🍰</span>
-      <strong>Something sweet</strong>
-      <small>Dessert deserves to be a meal, right?</small>
-    </button>
-
-    <button class="choice-card" data-food="Surprise me">
-      <span class="choice-icon">🎁</span>
-      <strong>Surprise me</strong>
-      <small>You choose, I trust you 💕</small>
-    </button>
-
-  </div>
-
-  <p class="selected" id="selectedFood"></p>
-
-  <button class="continue-btn hidden" id="finishBtn">
-    Finalize our date 💗
-  </button>
-
-</section>
-```
-
+    <p class="selected" id="selected"></p>
   </main>
 
-  <!-- SUCCESS -->
-
   <section class="success hidden" id="success">
+    <div class="success-card">
 
-```
-<div class="success-card">
+      <div class="big-heart">💗</div>
 
-  <div class="big-heart">💗</div>
+      <p class="eyebrow">It's a date!</p>
 
-  <p class="eyebrow">It's a date!</p>
+      <h2>HELL YEAH 🥰</h2>
 
-  <h2>HELL YEAH 🥰</h2>
+      <p id="successText">
+        I think it's gonna be so much fun baby
+      </p>
 
-  <p>
-    I think this is going to be such a lovely day with you, baby.
-  </p>
-
-  <div class="final-summary">
-
-    <div class="summary-row">
-      <span>📅</span>
-      <div>
-        <small>Day</small>
-        <strong id="finalDate"></strong>
+      <div class="mini-note">
+        <span>♡</span>
+        <span>7–11 October</span>
+        <span>♡</span>
       </div>
+
+      <button class="again-btn" id="againBtn">
+        Back to the question
+      </button>
+
     </div>
-
-    <div class="summary-row">
-      <span>⏰</span>
-      <div>
-        <small>Time</small>
-        <strong id="finalTime"></strong>
-      </div>
-    </div>
-
-    <div class="summary-row">
-      <span>💕</span>
-      <div>
-        <small>Date</small>
-        <strong id="finalType"></strong>
-      </div>
-    </div>
-
-    <div class="summary-row">
-      <span>🍴</span>
-      <div>
-        <small>Food</small>
-        <strong id="finalFood"></strong>
-      </div>
-    </div>
-
-  </div>
-
-  <p class="final-message">
-    I can't wait to spend that time with you ❤️
-  </p>
-
-  <button class="again-btn" id="againBtn">
-    Change my choices
-  </button>
-
-</div>
-```
-
   </section>
 
   <script src="script.js"></script>
